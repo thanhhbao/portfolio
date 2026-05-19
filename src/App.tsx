@@ -5,6 +5,7 @@ import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
 import { CopyrightBar } from './components/CopyrightBar'
 import { BottomNav } from './components/BottomNav'
+import { ScrollProgress } from './components/ScrollProgress'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Footer />
       <CopyrightBar />
       <BottomNav />
+      <ScrollProgress />
     </div>
   )
 }

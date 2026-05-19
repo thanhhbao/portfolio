@@ -1,4 +1,4 @@
-import { Github, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 export function BottomNav() {
@@ -59,6 +59,15 @@ export function BottomNav() {
           >
             <Github className="w-4 h-4" />
             GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/thanhbao1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-[#051A24] hover:opacity-70 transition-opacity flex items-center gap-1"
+          >
+            <Linkedin className="w-4 h-4" />
+            LinkedIn
           </a>
           <a
             href="mailto:thanhhbao4123@gmail.com"

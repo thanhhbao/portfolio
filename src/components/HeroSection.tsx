@@ -1,5 +1,5 @@
 import { useInViewAnimation } from '@/hooks/useInViewAnimation'
-import { useParallax } from '@/hooks/useParallax'
+import { useEffect, useState } from 'react'
 import { Button } from './Button'
 import { Github } from 'lucide-react'
 import { WordReveal } from './WordReveal'
@@ -7,7 +7,41 @@ import { StoryTabs } from './StoryTabs'
 
 export function HeroSection() {
   const { ref, isInView } = useInViewAnimation()
-  const { ref: parallaxRef, offset } = useParallax(90)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) return
+
+    let ticking = false
+
+    const updateProgress = () => {
+      const element = ref.current
+      if (!element) return
+
+      const rect = element.getBoundingClientRect()
+      const progress = Math.min(1.25, Math.max(0, -rect.top / window.innerHeight))
+      setScrollProgress(progress)
+      ticking = false
+    }
+
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(updateProgress)
+    }
+
+    updateProgress()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', updateProgress)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateProgress)
+    }
+  }, [ref])
+
+  const heroTextOpacity = Math.max(0.46, 1 - scrollProgress * 0.42)
 
   return (
     <>
@@ -16,9 +50,10 @@ export function HeroSection() {
         className="relative min-h-[118vh] md:min-h-[126vh] flex flex-col items-center justify-start px-5 pt-[9vh] md:pt-[10vh] pb-[32vh] overflow-hidden bg-[#EAF2F4]"
       >
         <div
-          ref={parallaxRef}
           className="absolute inset-0 z-0 will-change-transform"
-          style={{ transform: `translateY(${offset * 0.34}px) scale(1.045)` }}
+          style={{
+            transform: `translate3d(0, ${scrollProgress * 110}px, 0) scale(${1.06 + scrollProgress * 0.035})`,
+          }}
         >
           <video
             className="h-full w-full object-cover object-[65%_64%] lg:object-[center_66%]"
@@ -34,14 +69,25 @@ export function HeroSection() {
             />
           </video>
         </div>
-        <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none" />
+        <div
+          className="hero-vignette absolute inset-0 z-[1] pointer-events-none will-change-transform"
+          style={{ transform: `translate3d(0, ${scrollProgress * 28}px, 0)` }}
+        />
         <div className="absolute inset-x-0 top-0 z-[2] h-36 bg-gradient-to-b from-[#EAF2F4]/85 to-transparent pointer-events-none" />
-        <div className="hero-bottom-mist absolute inset-x-0 bottom-0 z-[2] h-[36vh] pointer-events-none" />
-        <div className="absolute left-1/2 top-[30vh] z-[2] h-[46vh] w-[76vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F7F4EF]/16 blur-3xl pointer-events-none" />
-
+        <div
+          className="hero-bottom-mist absolute inset-x-0 -bottom-[14vh] z-[2] h-[20vh] pointer-events-none will-change-transform"
+          style={{ transform: `translate3d(0, ${scrollProgress * -12}px, 0)` }}
+        />
+        <div
+          className="absolute left-1/2 top-[30vh] z-[2] h-[46vh] w-[76vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F7F4EF]/16 blur-3xl pointer-events-none will-change-transform"
+          style={{ transform: `translate3d(-50%, calc(-50% + ${scrollProgress * -64}px), 0)` }}
+        />
         <div
           className="relative z-10 w-full max-w-[760px] text-center px-2 py-7 md:px-6 md:py-9 will-change-transform"
-          style={{ transform: `translateY(${offset * -0.08}px)` }}
+          style={{
+            opacity: heroTextOpacity,
+            transform: `translate3d(0, ${scrollProgress * -72}px, 0)`,
+          }}
         >
           {/* Logo */}
           <h1

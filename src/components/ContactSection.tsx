@@ -5,7 +5,7 @@ import { FormEvent, useState } from 'react'
 
 const contactEndpoint =
   (import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined) ||
-  'https://formsubmit.co/ajax/thanhhbao4123@gmail.com'
+  'https://formsubmit.co/thanhhbao4123@gmail.com'
 
 export function ContactSection() {
   const { ref, isInView } = useInViewAnimation()
@@ -28,6 +28,19 @@ export function ContactSection() {
     const mode = email ? 'email' : 'anonymous'
 
     if (botField) return
+
+    if (contactEndpoint.includes('formsubmit.co')) {
+      setStatus('sending')
+      form.action = contactEndpoint.replace('/ajax/', '/')
+      form.method = 'POST'
+      form.target = 'contact-form-submit-frame'
+      form.submit()
+      window.setTimeout(() => {
+        setStatus('sent')
+        form.reset()
+      }, 800)
+      return
+    }
 
     if (!contactEndpoint) {
       const body = encodeURIComponent(
@@ -193,6 +206,11 @@ export function ContactSection() {
                 </button>
               </div>
             </form>
+            <iframe
+              name="contact-form-submit-frame"
+              title="Contact form submission"
+              className="hidden"
+            />
 
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href="mailto:thanhhbao4123@gmail.com">

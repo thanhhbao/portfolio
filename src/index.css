@@ -45,6 +45,7 @@
 /* Base Styles */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 body {
@@ -55,6 +56,11 @@ body {
   color: #051A24;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body::before {
@@ -160,8 +166,8 @@ body::after {
 
 .hero-bottom-mist {
   background:
-    linear-gradient(to top, #F7F4EF 0%, rgba(247, 244, 239, 0.92) 28%, rgba(229, 237, 240, 0.42) 62%, transparent 100%),
-    radial-gradient(ellipse at 50% 85%, rgba(210, 224, 230, 0.72), transparent 58%);
+    linear-gradient(to top, #F7F4EF 0%, rgba(247, 244, 239, 0.42) 18%, rgba(229, 237, 240, 0.10) 48%, transparent 100%),
+    radial-gradient(ellipse at 50% 96%, rgba(210, 224, 230, 0.24), transparent 58%);
 }
 
 .paper-texture {
@@ -421,15 +427,28 @@ body::after {
 
 .chapter-marker {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(22px) scale(0.82);
+  transform-origin: center;
   filter: blur(8px);
-  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.75s ease;
+  transition: opacity 0.75s ease, filter 0.75s ease;
 }
 
 .chapter-marker.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  animation: chapterMarkerSettle 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
   filter: blur(0);
+}
+
+@keyframes chapterMarkerSettle {
+  0% {
+    transform: translateY(22px) scale(0.82);
+  }
+  62% {
+    transform: translateY(-3px) scale(1.045);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .chapter-marker-label,
@@ -495,22 +514,4 @@ body::after {
   html {
     scroll-behavior: auto;
   }
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #F7F4EF;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #273C46;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #051A24;
 }

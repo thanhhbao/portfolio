@@ -55,17 +55,21 @@ export function Footer() {
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/thanhbao1/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-base text-[#051A24] hover:opacity-70 transition-opacity flex items-center gap-1"
               >
                 LinkedIn
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/thanhhbao.0412"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-base text-[#051A24] hover:opacity-70 transition-opacity flex items-center gap-1"
               >
-                Resume
+                Facebook
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
