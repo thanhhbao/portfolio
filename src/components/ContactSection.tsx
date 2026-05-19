@@ -4,8 +4,7 @@ import { Facebook, Github, Linkedin, Mail, MessageCircle, Send, X } from 'lucide
 import { FormEvent, useState } from 'react'
 
 const contactEndpoint =
-  (import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined) ||
-  'https://formsubmit.co/thanhhbao4123@gmail.com'
+  (import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined) || '/api/contact'
 
 export function ContactSection() {
   const { ref, isInView } = useInViewAnimation()
@@ -29,19 +28,6 @@ export function ContactSection() {
 
     if (botField) return
 
-    if (contactEndpoint.includes('formsubmit.co')) {
-      setStatus('sending')
-      form.action = contactEndpoint.replace('/ajax/', '/')
-      form.method = 'POST'
-      form.target = 'contact-form-submit-frame'
-      form.submit()
-      window.setTimeout(() => {
-        setStatus('sent')
-        form.reset()
-      }, 800)
-      return
-    }
-
     if (!contactEndpoint) {
       const body = encodeURIComponent(
         `Mode: ${mode}\nName: ${name}\nEmail: ${email || 'Anonymous'}\n\n${message}`
@@ -54,8 +40,11 @@ export function ContactSection() {
       setStatus('sending')
       const response = await fetch(contactEndpoint, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message, mode }),
       })
 
       if (!response.ok) throw new Error('Failed to send message')
@@ -206,11 +195,6 @@ export function ContactSection() {
                 </button>
               </div>
             </form>
-            <iframe
-              name="contact-form-submit-frame"
-              title="Contact form submission"
-              className="hidden"
-            />
 
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href="mailto:thanhhbao4123@gmail.com">
