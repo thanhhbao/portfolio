@@ -9,11 +9,13 @@ const contactEndpoint =
 export function ContactSection() {
   const { ref, isInView } = useInViewAnimation()
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
   const [isFormOpen, setIsFormOpen] = useState(false)
 
   const closeForm = () => {
     setIsFormOpen(false)
     setStatus('idle')
+    setErrorMessage('')
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -38,6 +40,7 @@ export function ContactSection() {
 
     try {
       setStatus('sending')
+      setErrorMessage('')
       const response = await fetch(contactEndpoint, {
         method: 'POST',
         headers: {
@@ -47,11 +50,15 @@ export function ContactSection() {
         body: JSON.stringify({ name, email, message, mode }),
       })
 
-      if (!response.ok) throw new Error('Failed to send message')
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => null)
+        throw new Error(errorBody?.detail || errorBody?.error || 'Failed to send message')
+      }
 
       setStatus('sent')
       form.reset()
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'Please use email.')
       setStatus('error')
     }
   }
@@ -112,6 +119,7 @@ export function ContactSection() {
                 onClick={() => {
                   setIsFormOpen(true)
                   setStatus('idle')
+                  setErrorMessage('')
                 }}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#051A24] px-6 py-3 text-sm font-medium text-white shadow-[0_12px_42px_rgba(5,26,36,0.22),inset_0_1px_0_rgba(255,255,255,0.24)] transition duration-500 hover:-translate-y-0.5 hover:bg-[#082838]"
               >
@@ -182,7 +190,7 @@ export function ContactSection() {
                   {status === 'sent'
                     ? 'Message sent. Thank you.'
                     : status === 'error'
-                      ? 'Could not send. Please use email.'
+                      ? errorMessage || 'Could not send. Please use email.'
                       : 'This sends to thanhhbao4123@gmail.com. Optional contact info.'}
                 </p>
                 <button
