@@ -5,6 +5,7 @@ import { FormEvent, useState } from 'react'
 
 const contactEndpoint =
   (import.meta.env.VITE_CONTACT_FORM_ENDPOINT as string | undefined) || '/api/contact'
+const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined
 
 export function ContactSection() {
   const { ref, isInView } = useInViewAnimation()
@@ -41,18 +42,40 @@ export function ContactSection() {
     try {
       setStatus('sending')
       setErrorMessage('')
-      const response = await fetch(contactEndpoint, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        web3FormsAccessKey ? 'https://api.web3forms.com/submit' : contactEndpoint,
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(
+            web3FormsAccessKey
+              ? {
+                  access_key: web3FormsAccessKey,
+                  subject: 'New portfolio message',
+                  from_name: name,
+                  email: email || 'thanhhbao4123@gmail.com',
+                  replyto: email || 'thanhhbao4123@gmail.com',
+                  name,
+                  contact_mode: mode,
+                  message,
+                }
+              : { name, email, message, mode },
+          ),
         },
-        body: JSON.stringify({ name, email, message, mode }),
-      })
+      )
 
-      if (!response.ok) {
-        const errorBody = await response.json().catch(() => null)
-        throw new Error(errorBody?.detail || errorBody?.error || 'Failed to send message')
+      const responseBody = await response.json().catch(() => null)
+
+      if (!response.ok || responseBody?.success === false) {
+        throw new Error(
+          responseBody?.message ||
+            responseBody?.detail ||
+            responseBody?.error ||
+            'Failed to send message',
+        )
       }
 
       setStatus('sent')

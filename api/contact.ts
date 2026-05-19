@@ -50,7 +50,6 @@ export default async function handler(req: any, res: any) {
       from_name: name,
       email: email || recipientEmail,
       replyto: email || recipientEmail,
-      to: recipientEmail,
       name,
       contact_mode: mode,
       message,
