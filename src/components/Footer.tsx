@@ -3,7 +3,7 @@ import { ArrowUpRight, Mail } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#F7F4EF] px-6 py-12">
+    <footer className="cinematic-section w-full px-6 py-12">
       <div className="max-w-[1200px] mx-auto">
         <div className="flex flex-col items-start justify-between gap-10 border-t border-[#051A24]/10 pt-10 md:flex-row">
           {/* Left - CTA */}

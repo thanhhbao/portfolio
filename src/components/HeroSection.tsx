@@ -1,4 +1,5 @@
 import { useInViewAnimation } from '@/hooks/useInViewAnimation'
+import { useParallax } from '@/hooks/useParallax'
 import { Button } from './Button'
 import { Github } from 'lucide-react'
 import { WordReveal } from './WordReveal'
@@ -6,32 +7,42 @@ import { StoryTabs } from './StoryTabs'
 
 export function HeroSection() {
   const { ref, isInView } = useInViewAnimation()
+  const { ref: parallaxRef, offset } = useParallax(90)
 
   return (
     <>
       <section
         ref={ref}
-        className="relative min-h-[118vh] md:min-h-[126vh] flex flex-col items-center justify-start px-5 pt-[9vh] md:pt-[10vh] pb-[32vh] overflow-hidden bg-[#F7F4EF]"
+        className="relative min-h-[118vh] md:min-h-[126vh] flex flex-col items-center justify-start px-5 pt-[9vh] md:pt-[10vh] pb-[32vh] overflow-hidden bg-[#EAF2F4]"
       >
-        <video
-          className="absolute inset-0 w-full h-full object-cover object-[65%_64%] lg:object-[center_66%] z-0"
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
+        <div
+          ref={parallaxRef}
+          className="absolute inset-0 z-0 will-change-transform"
+          style={{ transform: `translateY(${offset * 0.34}px) scale(1.045)` }}
         >
-          <source
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#F7F4EF]/25 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 z-[2] h-28 bg-gradient-to-b from-[#F7F4EF]/80 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 z-[2] h-[18vh] bg-gradient-to-t from-[#F7F4EF] via-[#F7F4EF]/35 to-transparent pointer-events-none" />
+          <video
+            className="h-full w-full object-cover object-[65%_64%] lg:object-[center_66%]"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          >
+            <source
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 z-[2] h-36 bg-gradient-to-b from-[#EAF2F4]/85 to-transparent pointer-events-none" />
+        <div className="hero-bottom-mist absolute inset-x-0 bottom-0 z-[2] h-[36vh] pointer-events-none" />
         <div className="absolute left-1/2 top-[30vh] z-[2] h-[46vh] w-[76vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F7F4EF]/16 blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 w-full max-w-[760px] text-center px-2 py-7 md:px-6 md:py-9">
+        <div
+          className="relative z-10 w-full max-w-[760px] text-center px-2 py-7 md:px-6 md:py-9 will-change-transform"
+          style={{ transform: `translateY(${offset * -0.08}px)` }}
+        >
           {/* Logo */}
           <h1
             className={`font-serif text-[34px] md:text-[44px] lg:text-[52px] font-semibold tracking-tight mb-3 drop-shadow-[0_2px_18px_rgba(247,244,239,0.95)] text-sheen ${
@@ -97,7 +108,7 @@ export function HeroSection() {
         </div>
       </section>
 
-      <section className="section-fog relative bg-[#F7F4EF] px-6 py-10">
+      <section className="section-fog cinematic-section relative px-6 py-10">
         <div className="relative z-10 mx-auto flex max-w-[1100px] items-center gap-4 text-xs uppercase tracking-[0.24em] text-[#051A24]/42">
           <span>Chapter 01</span>
           <span className="h-px flex-1 bg-[#051A24]/12" />

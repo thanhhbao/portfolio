@@ -6,8 +6,10 @@ export function ContactSection() {
   const { ref, isInView } = useInViewAnimation()
 
   return (
-    <section ref={ref} className="bg-[#F7F4EF] px-6 py-16 md:py-24">
-      <div className="animated-hairline relative mx-auto max-w-[1100px] overflow-hidden rounded-[32px] border border-[#051A24]/10 bg-white/55 p-8 shadow-[0_24px_90px_rgba(5,26,36,0.06)] md:p-12">
+    <section ref={ref} className="section-fog cinematic-section relative px-6 py-16 md:py-24">
+      <div className="animated-hairline cinematic-glass relative mx-auto max-w-[1100px] overflow-hidden rounded-[32px] p-8 md:p-12">
+        <div className="absolute -right-12 top-1/3 h-64 w-64 rounded-full bg-[#A8D4E4]/18 blur-3xl" />
+        <div className="absolute left-8 top-8 h-24 w-24 rounded-full border border-[#C8AD62]/18" />
         <div className="absolute right-6 top-6 hidden gap-2 md:flex">
           {['Internship', 'Applied AI', 'Product'].map((label, index) => (
             <span

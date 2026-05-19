@@ -23,13 +23,15 @@ export function SkillsSection() {
   const { ref, isInView } = useInViewAnimation()
 
   return (
-    <section ref={ref} className="section-fog relative bg-[#F7F4EF] px-6 py-20 md:py-28">
+    <section ref={ref} className="section-fog cinematic-section relative px-6 py-20 md:py-28">
       <div className="mx-auto max-w-[1100px]">
         <div
-          className={`paper-texture relative overflow-hidden rounded-[34px] border border-[#051A24]/10 bg-white/50 p-7 shadow-[0_22px_86px_rgba(5,26,36,0.045)] md:p-10 ${
+          className={`paper-texture cinematic-glass relative overflow-hidden rounded-[34px] p-7 md:p-10 ${
             isInView ? 'animate-fade-in-up' : 'opacity-0'
           }`}
         >
+          <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#A8D4E4]/18 blur-3xl" />
+          <div className="absolute -bottom-24 left-1/4 h-48 w-48 rounded-full bg-[#C8AD62]/10 blur-3xl" />
           <div className="absolute right-8 top-8 hidden text-xs uppercase tracking-[0.22em] text-[#051A24]/28 md:block">
             Learning Inventory
           </div>
@@ -49,13 +51,13 @@ export function SkillsSection() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-4 md:gap-0">
             {skillClusters.map((cluster) => (
-              <div key={cluster.title} className="border-[#051A24]/10 md:border-l md:first:border-l-0 md:px-5">
+              <div key={cluster.title} className="relative border-[#051A24]/10 md:border-l md:first:border-l-0 md:px-5">
                 <h3 className="text-base font-medium text-[#051A24]">{cluster.title}</h3>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {cluster.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full bg-[#F7F4EF]/72 px-3 py-1.5 text-xs text-[#273C46] transition duration-300 hover:-translate-y-0.5 hover:bg-white"
+                      className="rounded-full border border-white/45 bg-white/42 px-3 py-1.5 text-xs text-[#273C46] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:bg-white/72"
                     >
                       {skill}
                     </span>

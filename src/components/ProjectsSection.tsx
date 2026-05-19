@@ -15,7 +15,7 @@ type Project = {
 
 function InterviewMockup() {
   return (
-    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] bg-[#071D28] p-5 text-white shadow-inner">
+    <div className="deep-glass relative h-full min-h-[360px] overflow-hidden rounded-[24px] p-5 text-white">
       <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#8DB6C7]/20 blur-3xl" />
       <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-[#8DB6C7]/10 to-transparent" />
 
@@ -77,7 +77,7 @@ function InterviewMockup() {
 
 function HealthcareMockup() {
   return (
-    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] bg-[#EEF5F6] p-5">
+    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] border border-white/45 bg-[#E8F1F3]/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-md">
       <div className="absolute -left-16 top-10 h-48 w-48 rounded-full bg-[#9CC7D5]/30 blur-3xl" />
       <div className="relative grid h-full gap-4 md:grid-cols-[1fr_0.9fr]">
         <div className="rounded-3xl border border-[#051A24]/10 bg-white/70 p-5 shadow-[0_20px_70px_rgba(5,26,36,0.07)]">
@@ -117,7 +117,7 @@ function HealthcareMockup() {
 
 function SkdMockup() {
   return (
-    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] bg-[#F1F4F2] p-5">
+    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] border border-white/45 bg-[#EEF3F2]/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-md">
       <div className="grid h-full gap-4 md:grid-cols-[0.9fr_1.1fr]">
         <div className="rounded-3xl border border-[#051A24]/10 bg-white/65 p-4">
           <div className="mb-4 flex items-center justify-between">
@@ -168,7 +168,7 @@ function SkdMockup() {
 
 function PyAiMockup() {
   return (
-    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] bg-[#F4F1EA] p-5">
+    <div className="relative h-full min-h-[360px] overflow-hidden rounded-[24px] border border-white/45 bg-[#F4F1EA]/76 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-md">
       <div className="grid h-full gap-4 md:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-3xl bg-[#071D28] p-4 text-white shadow-[0_18px_60px_rgba(5,26,36,0.16)]">
           <div className="mb-4 flex items-center gap-2">
@@ -213,7 +213,7 @@ function PyAiMockup() {
 
 function TravelMockup() {
   return (
-    <div className="relative min-h-[240px] rounded-[22px] bg-[#F4F1EA] p-4">
+    <div className="relative min-h-[240px] rounded-[22px] border border-white/45 bg-[#F4F1EA]/74 p-4 backdrop-blur-md">
       <div className="rounded-3xl border border-[#051A24]/10 bg-white/72 p-5">
         <div className="flex items-center justify-between">
           <span className="text-sm text-[#051A24]/55">TravelEase</span>
@@ -235,7 +235,7 @@ function TravelMockup() {
 
 function SpotifyMockup() {
   return (
-    <div className="relative flex min-h-[240px] items-center justify-center rounded-[22px] bg-[#EEF0EC] p-4">
+    <div className="relative flex min-h-[240px] items-center justify-center rounded-[22px] border border-white/45 bg-[#EEF3F3]/70 p-4 backdrop-blur-md">
       <div className="w-[150px] rounded-[30px] border border-[#051A24]/10 bg-[#071D28] p-3 text-white shadow-[0_18px_60px_rgba(5,26,36,0.18)]">
         <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-white/20" />
         <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#A8D4E4] to-[#F0D7B8]" />
@@ -343,12 +343,13 @@ function FeaturedProjectScene({ project, index }: { project: Project; index: num
 
   return (
     <article
-      className="group relative min-h-[520px] overflow-hidden rounded-[38px] border border-[#051A24]/10 bg-white/58 p-5 shadow-[0_30px_110px_rgba(5,26,36,0.075)] transition duration-700 hover:-translate-y-1 hover:bg-white/70 md:p-7"
+      className="cinematic-glass group relative min-h-[520px] overflow-hidden rounded-[38px] p-5 transition duration-700 hover:-translate-y-1 md:p-7"
       style={{ animationDelay: `${0.12 + index * 0.08}s` }}
     >
       <div className="project-scene-glow" />
       <div className="atmospheric-ring -right-12 -top-16 h-52 w-52 opacity-65" />
       <div className="atmospheric-stone bottom-7 left-7 h-16 w-24 opacity-35" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/18 via-transparent to-[#071D28]/5 opacity-80" />
 
       <div className={`relative grid min-h-[480px] gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center ${visualFirst ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <div className="flex h-full flex-col justify-center px-1 py-5 md:px-4">
@@ -384,7 +385,7 @@ function FeaturedProjectScene({ project, index }: { project: Project; index: num
 function ProductProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article
-      className="rounded-[28px] border border-[#051A24]/10 bg-white/45 p-4 shadow-[0_16px_65px_rgba(5,26,36,0.045)] transition duration-500 hover:-translate-y-1 hover:bg-white/62"
+      className="cinematic-glass rounded-[28px] p-4 transition duration-500 hover:-translate-y-1"
       style={{ animationDelay: `${0.14 + index * 0.08}s` }}
     >
       {project.visual}
@@ -419,7 +420,7 @@ export function ProjectsSection() {
   const { ref, isInView } = useInViewAnimation()
 
   return (
-    <section id="projects" ref={ref} className="section-fog relative bg-[#F7F4EF] px-6 py-24 md:py-32">
+    <section id="projects" ref={ref} className="section-fog cinematic-section relative px-6 py-24 md:py-32">
       <div className="relative z-10 mx-auto max-w-[1240px]">
         <div className="mb-14 grid gap-5 md:grid-cols-[0.9fr_1.1fr] md:items-end">
           <div>

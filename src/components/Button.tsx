@@ -13,18 +13,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300',
+          'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8D4E4]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F4EF]',
           // Primary
           variant === 'primary' && [
             'bg-[#051A24] text-white',
-            'shadow-[0_1px_2px_0_rgba(5,26,36,0.1),0_4px_4px_0_rgba(5,26,36,0.09),0_9px_6px_0_rgba(5,26,36,0.05),0_17px_7px_0_rgba(5,26,36,0.01),0_26px_7px_0_rgba(5,26,36,0),inset_0_2px_8px_0_rgba(255,255,255,0.5)]',
-            'hover:scale-[1.02] hover:shadow-[0_1px_2px_0_rgba(5,26,36,0.15),0_6px_6px_0_rgba(5,26,36,0.12),0_12px_8px_0_rgba(5,26,36,0.08),0_20px_10px_0_rgba(5,26,36,0.03),0_30px_10px_0_rgba(5,26,36,0),inset_0_2px_8px_0_rgba(255,255,255,0.6)]',
+            'shadow-[0_12px_42px_rgba(5,26,36,0.22),inset_0_1px_0_rgba(255,255,255,0.26)]',
+            'hover:-translate-y-0.5 hover:bg-[#082838] hover:shadow-[0_18px_58px_rgba(5,26,36,0.28),0_0_34px_rgba(168,212,228,0.18),inset_0_1px_0_rgba(255,255,255,0.32)]',
           ],
           // Secondary
           variant === 'secondary' && [
-            'bg-white text-[#051A24]',
-            'shadow-[0_0_0_0.5px_rgba(0,0,0,0.05),0_4px_30px_rgba(0,0,0,0.08)]',
-            'hover:scale-[1.02] hover:shadow-[0_0_0_0.5px_rgba(0,0,0,0.08),0_6px_35px_rgba(0,0,0,0.12)]',
+            'border border-white/55 bg-white/62 text-[#051A24] backdrop-blur-md',
+            'shadow-[0_10px_34px_rgba(5,26,36,0.08),inset_0_1px_0_rgba(255,255,255,0.72)]',
+            'hover:-translate-y-0.5 hover:bg-white/82 hover:shadow-[0_16px_46px_rgba(5,26,36,0.12)]',
           ],
           // Tertiary
           variant === 'tertiary' && [
