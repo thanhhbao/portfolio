@@ -1,0 +1,462 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
+
+/* Font Faces */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9bb43e36419997ecfe_PPNeueMontreal-Book.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9b39c5673e51a86f5a_PPNeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Mondwest';
+  src: url('/PPMondwest-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Theme Variables */
+@theme inline {
+  --font-sans: 'Be Vietnam Pro', 'PP Neue Montreal', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Be Vietnam Pro', Georgia, 'Times New Roman', serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  
+  --color-background: #F7F4EF;
+  --color-foreground: #051A24;
+  --color-primary: #051A24;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #0D212C;
+  --color-muted: #273C46;
+  --color-card: #FFFFFF;
+  --color-card-dark: #051A24;
+  --color-accent-cyan: #00D5FF;
+  --color-accent-violet: #8B5CF6;
+  --color-accent-blue: #3B82F6;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F7F4EF;
+  color: #051A24;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.075;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 25% 20%, rgba(5, 26, 36, 0.10) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.48) 0 1px, transparent 1px);
+  background-size: 9px 9px, 13px 13px;
+}
+
+.cinematic-page::before,
+.cinematic-page::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 999px;
+  filter: blur(58px);
+  opacity: 0.45;
+}
+
+.cinematic-page::before {
+  width: 34rem;
+  height: 34rem;
+  top: 118vh;
+  left: -12rem;
+  background: radial-gradient(circle, rgba(142, 164, 171, 0.32), transparent 66%);
+}
+
+.cinematic-page::after {
+  width: 42rem;
+  height: 42rem;
+  top: 250vh;
+  right: -16rem;
+  background: radial-gradient(circle, rgba(215, 205, 190, 0.46), transparent 68%);
+}
+
+.section-fog {
+  position: relative;
+}
+
+.section-fog::before {
+  content: "";
+  position: absolute;
+  inset: -8rem 0 auto;
+  height: 16rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(247, 244, 239, 0), rgba(247, 244, 239, 0.94) 44%, rgba(247, 244, 239, 0));
+  z-index: 0;
+}
+
+.paper-texture {
+  background-image:
+    linear-gradient(90deg, rgba(5, 26, 36, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.7), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(247, 244, 239, 0.18));
+  background-size: 64px 100%, auto, auto;
+}
+
+.atmospheric-ring {
+  position: absolute;
+  border: 1px solid rgba(5, 26, 36, 0.08);
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(0.2px);
+}
+
+.atmospheric-stone {
+  position: absolute;
+  border-radius: 45% 55% 52% 48%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.75), rgba(159, 174, 179, 0.18) 60%, rgba(5, 26, 36, 0.04));
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.project-scene-glow {
+  position: absolute;
+  inset: 8% 4%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(158, 184, 193, 0.22), transparent 68%);
+  filter: blur(42px);
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation: marquee 12s linear infinite;
+  }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Portfolio Motion System */
+@keyframes wordReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) rotateX(28deg);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+.reveal-word {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes softShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.text-sheen {
+  background: linear-gradient(110deg, #051A24 0%, #0D212C 38%, #6f7e86 50%, #0D212C 62%, #051A24 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: softShimmer 8s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(1deg);
+  }
+}
+
+.soft-drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@keyframes borderTravel {
+  0% {
+    transform: translateX(-65%);
+  }
+  100% {
+    transform: translateX(165%);
+  }
+}
+
+.animated-hairline {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-hairline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, transparent 10%, rgba(5, 26, 36, 0.22), rgba(255, 255, 255, 0.8), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.animated-hairline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: borderTravel 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.spotlight-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(460px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.72), transparent 42%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes marqueeSoft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.soft-marquee {
+  animation: marqueeSoft 32s linear infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.28;
+    transform: scale(0.86);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+}
+
+.pulse-dot {
+  animation: pulseDot 3.6s ease-in-out infinite;
+}
+
+.chapter-marker {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(8px);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.75s ease;
+}
+
+.chapter-marker.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.chapter-marker-label,
+.chapter-marker-number {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chapter-marker-number {
+  transition-delay: 0.22s;
+}
+
+.chapter-marker.is-visible .chapter-marker-label,
+.chapter-marker.is-visible .chapter-marker-number {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-marker-line {
+  position: relative;
+  overflow: hidden;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+
+.chapter-marker.is-visible .chapter-marker-line {
+  transform: scaleX(1);
+}
+
+.chapter-marker-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(5, 26, 36, 0.28), transparent);
+}
+
+.chapter-marker.is-visible .chapter-marker-line::after {
+  animation: chapterLineSheen 1.2s ease 0.55s both;
+}
+
+@keyframes chapterLineSheen {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F4EF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #273C46;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #051A24;
+}
