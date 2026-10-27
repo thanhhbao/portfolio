@@ -1,6 +1,10 @@
 import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 import { Button } from './Button'
 import { ExternalLink, Github } from 'lucide-react'
+import { HealthcareAnatomy } from './anatomy/HealthcareAnatomy'
+import { InterviewAnatomy } from './anatomy/InterviewAnatomy'
+import { SkdAnatomy } from './anatomy/SkdAnatomy'
+import { PyAiAnatomy } from './anatomy/PyAiAnatomy'
 
 type Project = {
   number?: string
@@ -261,7 +265,7 @@ const aiProjects: Project[] = [
       'An exploration of how LLMs, audio, and visual signals can support interview preparation through resume parsing, question generation, speech analysis, behavior signals, score fusion, and reporting.',
     tech: ['Python', 'LLM', 'LoRA', 'QLoRA', 'Qwen', 'Whisper', 'MediaPipe'],
     github: 'https://github.com/thanhhbao/interviewAI',
-    visual: <InterviewMockup />,
+    visual: <InterviewAnatomy />,
   },
   {
     number: '02',
@@ -272,7 +276,7 @@ const aiProjects: Project[] = [
     tech: ['Next.js', 'TypeScript', 'ONNX Runtime Web', 'Tailwind CSS', 'shadcn/ui'],
     github: 'https://github.com/thanhhbao/ai_healthcare',
     demo: 'https://ai-healthcare-gamma.vercel.app',
-    visual: <HealthcareMockup />,
+    visual: <HealthcareAnatomy />,
   },
   {
     number: '03',
@@ -282,7 +286,7 @@ const aiProjects: Project[] = [
       'My core AI practice project: a configurable skin lesion classification pipeline with training loops, model evaluation, metrics logging, and experiment tracking.',
     tech: ['Python', 'Deep Learning', 'Computer Vision', 'Medical Imaging', 'Model Evaluation'],
     github: 'https://github.com/thanhhbao/SKD',
-    visual: <SkdMockup />,
+    visual: <SkdAnatomy />,
   },
   {
     number: '04',
@@ -292,7 +296,7 @@ const aiProjects: Project[] = [
       'A small learning product for practicing Python syntax in AI contexts, with interactive exercises, a Monaco-style editor, hints, progress tracking, and smooth UI motion.',
     tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Monaco Editor', 'Zod'],
     github: 'https://github.com/thanhhbao/PyAI_Review',
-    visual: <PyAiMockup />,
+    visual: <PyAiAnatomy />,
   },
 ]
 

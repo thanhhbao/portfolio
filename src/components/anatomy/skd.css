@@ -1,0 +1,28 @@
+.sk-act .iso-dots circle {
+  fill: #2f7f9a;
+  opacity: 1;
+}
+
+.sk-kernel {
+  fill: rgba(47, 127, 154, 0.16);
+  stroke: #2f7f9a;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.sk-grid .iso-line {
+  stroke-width: 0.7;
+}
+
+.sk-curve {
+  fill: none;
+  stroke: #2f7f9a;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sk-glow {
+  fill: #2f7f9a;
+  filter: blur(6px);
+}

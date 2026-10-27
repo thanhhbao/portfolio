@@ -1,0 +1,111 @@
+@import './iso.css';
+
+.hc {
+  --anatomy-paper: #f6fafb;
+  --anatomy-face: #ffffff;
+  --anatomy-top: #ffffff;
+  --anatomy-shade-0: #cddce1;
+  --anatomy-shade-1: #dae6ea;
+  --anatomy-shade-2: #e6eef1;
+  --anatomy-shade-3: #f0f5f7;
+  --anatomy-lit-top: #ffffff;
+  --anatomy-lit-shade: #e4f0f3;
+  --anatomy-hi: #1d3a48;
+  --anatomy-mid: #7f9aa5;
+  --anatomy-lo: #aec2ca;
+  --anatomy-faint: #d3dfe4;
+  --anatomy-lit: #2f7f9a;
+  --anatomy-halo: #4f7a8c;
+  --anatomy-halo-opacity: 0.3;
+  --anatomy-dot: #1d3a48;
+  --anatomy-weight: 0.6px;
+  --anatomy-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --hc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hc-stage {
+  perspective: 1100px;
+  touch-action: pan-y;
+}
+
+.hc-tilt {
+  transform-origin: 50% 60%;
+  will-change: transform;
+}
+
+.hc-glass {
+  fill: rgba(168, 212, 228, 0.2);
+  stroke: rgba(47, 127, 154, 0.5);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+.hc-glass-back {
+  fill: rgba(168, 212, 228, 0.07);
+  stroke: rgba(47, 127, 154, 0.22);
+}
+.hc-shine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.hc-skin {
+  fill: #efd3c8;
+  stroke: #c7a094;
+  stroke-width: 0.5;
+}
+.hc-lesion-halo {
+  fill: #d6a799;
+  opacity: 0.55;
+}
+.hc-lesion {
+  fill: #8a4f43;
+}
+
+.hc-arc {
+  fill: none;
+  stroke: #2f7f9a;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.hc-beam {
+  fill: rgba(47, 127, 154, 0.16);
+  stroke: none;
+}
+
+.hc-glow {
+  fill: #2f7f9a;
+  opacity: 0;
+  filter: blur(8px);
+}
+
+/* assembly: parts drop in one after another when the figure first scrolls into view */
+.hc-asm {
+  opacity: 0;
+  transform: translateY(calc(var(--drop, 24px) * -1));
+}
+.hc[data-built] .hc-asm {
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 0.95s var(--hc-ease) calc(var(--i) * 85ms),
+    opacity 0.55s ease-out calc(var(--i) * 85ms);
+}
+.hc[data-calm] .hc-asm {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.hc[data-built] .hc-asm[data-glass] {
+  transition-duration: 1.2s, 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc .hc-asm {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

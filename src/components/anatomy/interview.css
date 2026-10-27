@@ -1,0 +1,28 @@
+.iv-cable {
+  stroke: var(--anatomy-lo);
+  stroke-width: 2.4;
+}
+.iv-pulse {
+  stroke: #2f7f9a;
+  stroke-width: 1.6;
+  stroke-dasharray: 2 7;
+}
+.iv-arc {
+  fill: none;
+  stroke: #2f7f9a;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.iv-ring {
+  fill: none;
+  stroke: #2f7f9a;
+  stroke-width: 1;
+}
+.iv-track {
+  stroke: #2f7f9a;
+  stroke-width: 1.2;
+}
+.hc [data-lamp][data-on] .iso-solid > .iso-top,
+.hc [data-lamp][data-on] .iso-solid > .iso-shade {
+  fill: #2f7f9a;
+}

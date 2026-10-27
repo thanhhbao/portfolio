@@ -1,0 +1,33 @@
+.py-tab {
+  fill: #2f7f9a;
+  stroke: none;
+}
+.py-tick {
+  fill: none;
+  stroke: #2f7f9a;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.py-ink {
+  fill: #2f7f9a;
+  opacity: 0.85;
+  stroke: none;
+}
+.py-hint {
+  fill: #e7d9a8;
+  stroke: #c8ad62;
+  stroke-width: 0.6;
+}
+.py-cone {
+  fill: rgba(200, 173, 98, 0.22);
+  stroke: none;
+}
+.py-glow {
+  fill: #2f7f9a;
+  opacity: 0;
+  filter: blur(4px);
+}
+.py-glow-gold {
+  fill: #c8ad62;
+}
