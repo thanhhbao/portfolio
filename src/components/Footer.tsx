@@ -9,7 +9,7 @@ export function Footer() {
           {/* Left - CTA */}
           <div>
             <p className="mb-4 max-w-sm text-sm leading-relaxed text-[#273C46]">
-              A student portfolio about learning applied AI, software engineering, and model-to-product workflows.
+              A portfolio of software engineering and product work.
             </p>
             <a href="mailto:thanhhbao4123@gmail.com">
               <Button variant="primary">
@@ -26,7 +26,7 @@ export function Footer() {
                 href="#projects"
                 className="text-base text-[#051A24] hover:opacity-70 transition-opacity flex items-center gap-1"
               >
-                AI Projects
+                Projects
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a

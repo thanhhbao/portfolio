@@ -6,10 +6,12 @@ import { Footer } from './components/Footer'
 import { CopyrightBar } from './components/CopyrightBar'
 import { BottomNav } from './components/BottomNav'
 import { ScrollProgress } from './components/ScrollProgress'
+import { PageBackground } from './components/PageBackground'
 
 function App() {
   return (
     <div className="cinematic-page relative min-h-screen overflow-hidden bg-[#F7F4EF]">
+      <PageBackground />
       <HeroSection />
       <ProjectsSection />
       <div id="skills">

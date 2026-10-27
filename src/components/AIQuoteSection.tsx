@@ -2,8 +2,8 @@ import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 import { Brain, Cpu, ScanLine, Sparkles } from 'lucide-react'
 
 const signals = [
-  { label: 'Studying LLM workflows', icon: Brain },
-  { label: 'Practicing client-side inference', icon: Cpu },
+  { label: 'Designing product workflows', icon: Brain },
+  { label: 'Building client-side apps', icon: Cpu },
   { label: 'Exploring medical imaging', icon: ScanLine },
 ]
 
@@ -23,7 +23,7 @@ export function AIQuoteSection() {
               }`}
             >
               <Sparkles className="h-4 w-4" />
-              A learning path into applied AI
+              From idea to product
             </div>
             <blockquote
               className={`max-w-2xl text-[30px] leading-[1.12] tracking-tight text-[#0D212C] md:text-[44px] ${
@@ -31,7 +31,7 @@ export function AIQuoteSection() {
               }`}
               style={{ animationDelay: '0.08s' }}
             >
-              I learn best by turning small model experiments into clear, testable{' '}
+              I turn small experiments into clear, testable{' '}
               <span className="font-serif">product</span> experiences.
             </blockquote>
           </div>

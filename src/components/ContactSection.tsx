@@ -92,7 +92,7 @@ export function ContactSection() {
         <div className="absolute -right-12 top-1/3 h-64 w-64 rounded-full bg-[#A8D4E4]/18 blur-3xl" />
         <div className="absolute left-8 top-8 h-24 w-24 rounded-full border border-[#C8AD62]/18" />
         <div className="absolute right-6 top-6 hidden gap-2 md:flex">
-          {['Internship', 'Applied AI', 'Product'].map((label, index) => (
+          {['Collaboration', 'Engineering', 'Product'].map((label, index) => (
             <span
               key={label}
               className="soft-drift rounded-full border border-[#051A24]/10 bg-[#F7F4EF]/70 px-3 py-1.5 text-xs text-[#051A24]/55"
@@ -117,7 +117,7 @@ export function ContactSection() {
               }`}
               style={{ animationDelay: '0.08s' }}
             >
-              I&apos;m looking for a place to keep learning by building.
+              Let&apos;s build something together.
             </h2>
           </div>
 
@@ -126,7 +126,7 @@ export function ContactSection() {
             style={{ animationDelay: '0.16s' }}
           >
             <p className="text-sm leading-relaxed text-[#273C46] md:text-base">
-              I am open to internships, training programs, and collaborations where I can strengthen my AI foundations and contribute to practical product work.
+              I am open to collaborations and conversations about building practical products.
             </p>
 
             <div

@@ -9,7 +9,7 @@ export function StoryTabs() {
           <div className="absolute right-1/4 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#AEC5CB]/20 blur-3xl" />
           <div className="absolute -right-20 bottom-0 h-44 w-44 rounded-full border border-[#C8AD62]/20" />
           <div className="absolute right-8 top-8 hidden font-mono text-[11px] uppercase tracking-[0.24em] text-[#051A24]/32 md:block">
-            learning log / 2026
+            field notes / 2026
           </div>
 
           <div className="relative grid min-h-[380px] gap-10 md:grid-cols-[0.28fr_1fr] md:items-center">
@@ -23,8 +23,7 @@ export function StoryTabs() {
             <div className="max-w-[760px]">
               <div className="mb-7 h-px w-24 bg-[#051A24]/16" />
               <p className="text-[25px] font-normal leading-[1.24] tracking-tight text-[#0D212C] md:text-[36px] lg:text-[40px]">
-                Hi, I’m Bảo — a Software Engineering student currently on the path to becoming an AI Engineer.
-              </p>
+                Hi, I’m Bảo - Just a human trying to make sense of things that probably don't make sense.</p>
               <div className="mt-10 max-w-[680px] space-y-5 border-l border-[#051A24]/12 pl-5 md:pl-7">
                 <p className="text-[19px] leading-[1.6] tracking-tight text-[#273C46] md:text-[24px]">
                   I used to believe code was only meant to make machines run.

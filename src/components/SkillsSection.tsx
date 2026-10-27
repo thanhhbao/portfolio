@@ -4,7 +4,7 @@ import { useInViewAnimation } from '@/hooks/useInViewAnimation'
 const skillClusters = [
   {
     title: 'AI / ML',
-    stage: 'Learn',
+    stage: 'Train',
     role: 'Train and evaluate the model: preprocess data, run experiments, checkpoint the best weights.',
     projects: ['SKD', 'InterviewAI'],
     skills: ['Python', 'Computer Vision Classification', 'Medical Image Classification', 'Model Evaluation', 'Data Preprocessing', 'Checkpointing'],
@@ -48,19 +48,19 @@ export function SkillsSection() {
           <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#A8D4E4]/18 blur-3xl" />
           <div className="absolute -bottom-24 left-1/4 h-48 w-48 rounded-full bg-[#C8AD62]/10 blur-3xl" />
           <div className="absolute right-8 top-8 hidden text-xs uppercase tracking-[0.22em] text-[#051A24]/28 md:block">
-            Learning Inventory
+            Toolbox
           </div>
           <div className="grid gap-6 md:grid-cols-[0.78fr_1fr] md:items-end">
             <div>
               <span className="text-xs uppercase tracking-[0.22em] text-[#051A24]/45">
-                Learning Inventory
+                Toolbox
               </span>
               <h2 className="mt-3 text-[32px] leading-[1.08] tracking-tight text-[#0D212C] md:text-[46px]">
-                Skills picked up along the way.
+                Skills I build with.
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-relaxed text-[#273C46] md:text-base">
-              A mix of AI, web, and product tools I&apos;ve been learning through projects.
+              A mix of web, mobile, and product tools I use across projects.
             </p>
           </div>
 

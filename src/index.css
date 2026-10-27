@@ -126,7 +126,7 @@ body::after {
   inset: -8rem 0 auto;
   height: 16rem;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(247, 244, 239, 0), rgba(247, 244, 239, 0.94) 44%, rgba(247, 244, 239, 0));
+  background: linear-gradient(to bottom, rgba(247, 244, 239, 0), rgba(247, 244, 239, 0.55) 44%, rgba(247, 244, 239, 0));
   z-index: 0;
 }
 
@@ -134,7 +134,7 @@ body::after {
   position: relative;
   background:
     radial-gradient(circle at 50% 0%, rgba(205, 222, 229, 0.18), transparent 34rem),
-    linear-gradient(180deg, rgba(247, 244, 239, 0.86), rgba(239, 244, 245, 0.46), rgba(247, 244, 239, 0.9));
+    linear-gradient(180deg, rgba(247, 244, 239, 0.34), rgba(239, 244, 245, 0.08), rgba(247, 244, 239, 0.4));
 }
 
 .cinematic-glass {
@@ -514,4 +514,81 @@ body::after {
   html {
     scroll-behavior: auto;
   }
+}
+
+
+/* Page backdrop */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-bg-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, #DCEBF0 0%, #EEF4F3 34%, #F7F2E6 68%, #EFE6D4 100%);
+}
+
+.page-bg-orb {
+  position: absolute;
+  border-radius: 999px;
+  will-change: transform;
+}
+
+.page-bg-orb-teal {
+  width: 56vmax;
+  height: 56vmax;
+  top: -18vmax;
+  left: -16vmax;
+  background: radial-gradient(circle, rgba(120, 183, 204, 0.5), transparent 68%);
+  animation: pageDriftA 38s ease-in-out infinite alternate;
+}
+
+.page-bg-orb-gold {
+  width: 50vmax;
+  height: 50vmax;
+  bottom: -20vmax;
+  right: -14vmax;
+  background: radial-gradient(circle, rgba(226, 198, 130, 0.42), transparent 68%);
+  animation: pageDriftB 44s ease-in-out infinite alternate;
+}
+
+.page-bg-orb-blue {
+  width: 40vmax;
+  height: 40vmax;
+  top: 32vh;
+  right: 8vmax;
+  background: radial-gradient(circle, rgba(160, 178, 226, 0.3), transparent 70%);
+  animation: pageDriftC 52s ease-in-out infinite alternate;
+}
+
+.page-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(5, 26, 36, 0.34) 1.2px, transparent 1.8px),
+    linear-gradient(rgba(47, 127, 154, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 127, 154, 0.12) 1px, transparent 1px);
+  background-size: 44px 44px, 176px 176px, 176px 176px;
+  opacity: 0.9;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0.25) 100%);
+  mask-image: radial-gradient(ellipse at 50% 45%, #000 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0.25) 100%);
+}
+
+@keyframes pageDriftA {
+  to { transform: translate3d(9vmax, 7vmax, 0) scale(1.08); }
+}
+@keyframes pageDriftB {
+  to { transform: translate3d(-8vmax, -6vmax, 0) scale(1.1); }
+}
+@keyframes pageDriftC {
+  to { transform: translate3d(-6vmax, 8vmax, 0) scale(0.92); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-bg-orb { animation: none; }
 }

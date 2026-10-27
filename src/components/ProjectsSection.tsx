@@ -429,7 +429,7 @@ export function ProjectsSection() {
         <div className="mb-14 grid gap-5 md:grid-cols-[0.9fr_1.1fr] md:items-end">
           <div>
             <span className={`text-xs uppercase tracking-[0.22em] text-[#051A24]/45 ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              Featured AI Projects
+              Featured Projects
             </span>
             <h2
               className={`mt-3 text-[38px] leading-[1.04] tracking-tight text-[#0D212C] md:text-[58px] ${
@@ -437,7 +437,7 @@ export function ProjectsSection() {
               }`}
               style={{ animationDelay: '0.06s' }}
             >
-              Projects from the learning curve.
+              Selected projects.
             </h2>
           </div>
           <p
@@ -446,7 +446,7 @@ export function ProjectsSection() {
             }`}
             style={{ animationDelay: '0.12s' }}
           >
-            Each project taught me a different part of applied AI — from medical imaging and ONNX inference to LLM workflows and interactive learning tools.
+            Each project covers a different part of building products — from medical imaging and in-browser inference to interview tools and interactive learning apps.
           </p>
         </div>
 

@@ -106,7 +106,7 @@ export function HeroSection() {
             }`}
             style={{ animationDelay: '0.2s' }}
           >
-            Software Engineering student learning applied AI
+            Working at VinSmart Future
           </p>
 
           {/* Main Heading */}
@@ -118,9 +118,7 @@ export function HeroSection() {
           >
             
             <span className="mt-5 block text-[24px] leading-[1.18] md:text-[34px] lg:text-[40px]">
-              <WordReveal text="Some say AI is becoming the new electricity." delay={0.92} />
-              <br />
-              <WordReveal text="I’m still learning the wiring." delay={1.08} />
+              <WordReveal text="Ctrl+C, Ctrl+V Engineering" delay={0.92} />
             </span>
           </h2>
 
@@ -149,7 +147,7 @@ export function HeroSection() {
             }`}
             style={{ animationDelay: '0.5s' }}
           >
-             AI · Mobile · Website 
+             Web · Mobile · Product 
           </p>
         </div>
       </section>
@@ -158,7 +156,7 @@ export function HeroSection() {
         <div className="relative z-10 mx-auto flex max-w-[1100px] items-center gap-4 text-xs uppercase tracking-[0.24em] text-[#051A24]/42">
           <span>Chapter 01</span>
           <span className="h-px flex-1 bg-[#051A24]/12" />
-          <span>The learning curve</span>
+          <span>How I got here</span>
         </div>
       </section>
 
